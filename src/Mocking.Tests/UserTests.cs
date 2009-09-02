@@ -39,7 +39,7 @@ namespace Mocking.Tests
 
         public void DeleteUser(int id)
         {
-            _userRepository.DeletePostsForUser(6);
+            _userRepository.DeletePostsForUser(id);
             _userRepository.DeleteUser(id);
         }
     }
