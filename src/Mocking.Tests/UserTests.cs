@@ -11,19 +11,11 @@ namespace Mocking.Tests
         {
             int userID = 1;
             var userRepositoryMock = new Mock<IUserRepository>();
-            userRepositoryMock.Setup(repository => repository.DeletePostsForUser(userID))
-                .Returns(true)
-                .AtMostOnce();
-            userRepositoryMock.Setup(repository => repository.DeleteUser(userID))
-                .Returns(true)
-                .AtMostOnce();
 
             var userService = new UserService(userRepositoryMock.Object);
             userService.DeleteUser(userID);
 
             userRepositoryMock.Verify(repository => repository.DeletePostsForUser(userID));
-
-
         }
     }
 
@@ -35,7 +27,6 @@ namespace Mocking.Tests
         {
             _userRepository = userRepository;
         }
-
 
         public void DeleteUser(int id)
         {
